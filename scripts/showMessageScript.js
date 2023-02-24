@@ -1,13 +1,13 @@
 /*
 This function display messages on console or alert window
 Function arguments:
-- message - String - content of message
+- message - String - alias of message
 - delay - Number - after what time to display a message (1000 = 1s)
-- numberShow - Number - how many times to show message
+- numberOfMessages - Number - how many messages to show 
 - activeAlert - Boolean - true: display message in Alert window
                           false: display message in console
 */
-function showMessage(message, delay, numberShow, activeAlert) {
+function showMessage(message, delay, numberOfMessages, activeAlert) {
 	const arrayOfMessages = [
 		'Do startu!',
 		'Gotowi!',
@@ -16,7 +16,7 @@ function showMessage(message, delay, numberShow, activeAlert) {
 		'Biegnij Forest, biegnij',
 	];
 
-	if (numberShow === 0) {
+	if (numberOfMessages === 0) {
 		if (activeAlert) {
 			alert(
 				'Brak komunikatów do wyświetlenia lub jest ich za mało, sprawdź tablicę komunikatów'
@@ -33,14 +33,14 @@ function showMessage(message, delay, numberShow, activeAlert) {
 			} else {
 				console.log('Koniec');
 			}
-		}, delay * (numberShow + 1));
+		}, delay * (numberOfMessages + 1));
 	}
 
-	for (let i = 0; i < numberShow; i++) {
-		if (numberShow > arrayOfMessages.length) {
+	for (let i = 0; i < numberOfMessages; i++) {
+		if (numberOfMessages > arrayOfMessages.length) {
 			if (activeAlert) {
 				alert(
-					'Za mało komunikatów do wyświetlenia, sprawdź tablicę komunikatów'
+					'Zła mało komunikatów do wyświetlenia, sprawdź tablicę komunikatów'
 				);
 			} else {
 				console.log(
@@ -60,4 +60,4 @@ function showMessage(message, delay, numberShow, activeAlert) {
 	}
 }
 
-showMessage('Komunikat:', 3000, 5, false);
+showMessage('Komunikat:', 3000, 2, false);
