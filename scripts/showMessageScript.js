@@ -8,11 +8,23 @@ Function arguments:
                           false: display message in console
 */
 function showMessage(message, delay, numberShow, activeAlert) {
+	const arrayOfMessages = [
+		'Do startu!',
+		'Gotowi!',
+		'Start!',
+		'Biegnij',
+		'Biegnij Forest, biegnij',
+	];
+
 	if (numberShow === 0) {
 		if (activeAlert) {
-			alert('Brak komunikatów do wyświetlenia');
+			alert(
+				'Brak komunikatów do wyświetlenia lub jest ich za mało, sprawdź tablicę komunikatów'
+			);
 		} else {
-			console.log('Brak komunikatów do wyświetlenia');
+			console.log(
+				'Brak komunikatów do wyświetlenia lub jest ich za mało, sprawdź tablicę komunikatów'
+			);
 		}
 	} else {
 		setTimeout(() => {
@@ -24,12 +36,25 @@ function showMessage(message, delay, numberShow, activeAlert) {
 		}, delay * (numberShow + 1));
 	}
 
-	for (let i = 1; i < numberShow + 1; i++) {
+	for (let i = 0; i < numberShow; i++) {
+		if (numberShow > arrayOfMessages.length) {
+			if (activeAlert) {
+				alert(
+					'Za mało komunikatów do wyświetlenia, sprawdź tablicę komunikatów'
+				);
+			} else {
+				console.log(
+					'Za mało komunikatów do wyświetlenia, sprawdź tablicę komunikatów'
+				);
+			}
+			break;
+		}
+
 		setTimeout(() => {
 			if (activeAlert) {
-				alert(`${message} ${i}`);
+				alert(`${message} ${arrayOfMessages[i]}`);
 			} else {
-				console.log(`${message} ${i}`);
+				console.log(`${message} ${arrayOfMessages[i]}`);
 			}
 		}, delay * i);
 	}
